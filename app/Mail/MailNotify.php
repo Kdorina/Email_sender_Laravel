@@ -25,7 +25,8 @@ class MailNotify extends Mailable
 
     public function build() {
 
-        return $this->subject( "Test Email" )->view( "emails.index" );
+        /* return $this->subject( "Test Email" )->view( "emails.index" ); */
+        return $this->from('backenddor@gmail.com')->subject( "Test Email" );
     }
 
 

@@ -18,4 +18,5 @@ use App\Http\Controllers\ContactController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/send', [ContactController::class, 'sendEmail']);
+/* Route::get('/send', [ContactController::class, 'index']); */
+Route::post('/sendmail', [ContactController::class, 'send']);
