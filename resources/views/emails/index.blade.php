@@ -1,9 +1,12 @@
-{{-- <h3>Delivery Email</h3>
-<h3>{{ $details["name"] }}</h3>
-<p>{{ $details[ "message" ]}}</p>
- --}}
-{{--     <h3>Delivery Email</h3>
-    <h3>{{ $details["title"] }}</h3>
-    <p>{{ $details[ "body" ]}}</p>
- --}}
+{{--
+<h2>Hello Admin</h2> <br><br>
 
+You have got an email from Contact Form <br><br>
+
+User details: <br><br>
+
+Name: {{ $name }} <br>
+Email: {{ $email }} <br>
+Subject: {{ $subject }} <br>
+Message: {{ $bmessage }} <br><br>
+ --}}
