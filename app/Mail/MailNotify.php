@@ -44,7 +44,7 @@ class MailNotify extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.index',
+          /*   view: 'emails.index', */
         );
     }
 

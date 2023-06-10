@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\MailNotify;
-
+use Validator;
 class ContactController extends Controller
 {
 
@@ -27,8 +27,12 @@ class ContactController extends Controller
             'message'=>$request->message,
         );
 
-        Mail::to('backenddor@gmail.com')->send(new MailNotify( $details ));
-        return back()->with('success', 'Thanks for contacting us!');
+
+        Mail::to('backenddor@gmail.com')->send(new MailNotify());
+        return response()->json(["message" => "Email sent successfully."]);
+        echo "HTML Email Sent. Check your inbox.";
+
+       /*  return back()->with('success', 'Thanks for contacting us!'); */
        /*  $details = [
             "title" => "Test Email",
             "body" => "My first email"
