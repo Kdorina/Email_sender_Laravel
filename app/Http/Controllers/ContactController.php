@@ -14,13 +14,17 @@ class ContactController extends Controller
     }
 
     public function send(Request $request){
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
             'subject'=>'required',
-            'message'=>'required',
-        ]);
+            'message' => 'required'
+         ]);
 
+         if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+        
         $details = array(
             'name'=>$request->name,
             'subject'=>$request->subject,
