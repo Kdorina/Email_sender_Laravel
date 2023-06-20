@@ -16,5 +16,6 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('welcome');
-});/*
-Route::get('/send', [ContactController::class, 'send']); */
+});
+
+Route::get('/send', [ContactController::class, 'send']);
