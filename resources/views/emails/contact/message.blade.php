@@ -2,6 +2,7 @@
 
 <p><strong>Name:</strong> {{ $name }}</p>
 <p><strong>Email:</strong> {{ $email }}</p>
-<p><strong>Tárgy:</strong> {{ $subject }}</p>
+<p><strong>Telefonszám:</strong> {{ $phone_number }}</p>
+<p><strong>Dátum:</strong> {{ $res_date }}</p>
 <p><strong>Üzenet:</strong></p>
-<p>{{ $message }}</p>
+<p>{{ $messages }}</p>

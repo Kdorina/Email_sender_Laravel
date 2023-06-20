@@ -28,8 +28,9 @@ class ContactMessage extends Mailable
         ->with([
             'name' => $this->contactData['name'],
             'email' => $this->contactData['email'],
-            'subject' => $this->contactData['subject'],
-            'message' => $this->contactData['message'],
+            'phone_number' => $this->contactData['phone_number'],
+            'res_date' => $this->contactData['res_date'],
+            'messages' => $this->contactData['messages'],
         ])
         ->subject('New Contact Message');
     }

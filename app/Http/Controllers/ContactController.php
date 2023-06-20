@@ -8,22 +8,24 @@ use App\Mail\MailNotify;
 use App\Mail\ContactMessage;
 use Validator;
 use App\Models\Contact;
-class ContactController extends Controller
+class ContactController extends BaseController
 {
     public function send(Request $request){
 
         $validator = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'subject'=>'required',
-            'message' => 'required'
+            'phone_number'=>'required',
+            'res_date' => 'required',
+            'messages' => 'required'
          ]);
 
          $contactData = [
             'name' => $validator['name'],
             'email' => $validator['email'],
-            'subject' => $validator['subject'],
-            'message' => $validator['message'],
+            'phone_number' => $validator['phone_number'],
+            'res_date' => $validator['res_date'],
+            'messages' => $validator['messages'],
         ];
 
         $userEmail = $validator['email'];
@@ -34,6 +36,10 @@ class ContactController extends Controller
 
         return response()->json(['success' => 'Az e-mailt elküldtük.']);
     }
+
+
+
+
 
     }
 
