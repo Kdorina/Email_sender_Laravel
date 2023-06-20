@@ -13,34 +13,11 @@ use App\Http\Resources\ReservationResource;
 use App\Models\Reservation;
 class ContactController extends BaseController
 {
-    // public function send(Request $request){
-
-    //     $validator = $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email',
-    //         'phone_number'=>'required',
-    //         'res_date' => 'required',
-    //         'messages' => 'required'
-    //      ]);
-
-    //      $contactData = [
-    //         'name' => $validator['name'],
-    //         'email' => $validator['email'],
-    //         'phone_number' => $validator['phone_number'],
-    //         'res_date' => $validator['res_date'],
-    //         'messages' => $validator['messages'],
-    //     ];
-
-    //     $userEmail = $validator['email'];
-    //     $myEmail = 'laravel.megyeri@gmail.com';
-
-    //     Mail::to($userEmail)->send(new ContactMessage($validator));
-    //     Mail::to($myEmail)->send(new ContactMessage($validator));
-
-    //     return response()->json(['success' => 'Az e-mailt elküldtük.']);
-   // }
-
-
+    public function index()
+    {
+        $reservations = Reservation::all();
+        return $reservations;
+    }
 
     public function create(Request $request)
     {
@@ -65,6 +42,38 @@ class ContactController extends BaseController
 
         return $this->sendResponse(new ReservationResource($reservation), "Sikeres foglalás");
     }
+
+
+    public function update(Request $request,  string $id)
+    {
+        $input = $request->all();
+        $validator = Validator::make( $input , [
+            "name" => "required",
+            "email" => "required",
+            "phone_number" =>"required",
+            "res_date" => "required",
+            // "options"=>"required",
+            "messages"=>"required",
+        ]);
+        if ($validator->fails() ){
+         return $this->sendError( $validator->errors() );
+      }
+      $cat = Reservation::find($id);
+      $cat->update($request->all());
+      return $this->sendResponse( [], "Frissítve");
+
+
+}
+
+
+
+    public function destroy(string $id)
+{
+    Reservation::destroy($id);
+    return $this->sendResponse( [], "Törölve");
+}
+
+
 
 
 

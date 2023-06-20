@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Validator;
-use App\Models\User;
+use App\Models\Admin;
 use App\Mail\RegistrationConfirmation;
-// use App\Mail\RegistrationConfirmation;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Resources\Admin as AdminResource;
 use App\Http\Controllers\BaseController as BaseController;
@@ -16,7 +15,7 @@ class AdminController extends BaseController
     public function login(Request $request){
         if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])){;
 
-            $authUser = Auth::guard('user')->user();
+            $authUser = Auth::guard('admin')->user();
             $success["token"] = $authUser->createToken("MyAuthApp", ['admin'])->plainTextToken;
             $success["name"] = $authUser->name;
             return $this->sendResponse($success, "Sikeres bejelentkezés.");
@@ -45,7 +44,7 @@ class AdminController extends BaseController
 
         $input = $request->all();
         $input["password"] = bcrypt($input["password"]);
-        $user = User::create($input);
+        $user = Admin::create($input);
         $success ["name"] = $user->name;
         Mail::to($user->email)->send(new RegistrationConfirmation($user));
 

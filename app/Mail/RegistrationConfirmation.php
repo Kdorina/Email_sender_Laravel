@@ -6,13 +6,13 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
+use App\Models\Admin;
 
 class RegistrationConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $admin;
 
     /**
      * Create a new message instance.
@@ -20,9 +20,9 @@ class RegistrationConfirmation extends Mailable
      * @param  User  $user
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(Admin $admin)
     {
-        $this->user = $user;
+        $this->admin = $admin;
     }
 
     /**

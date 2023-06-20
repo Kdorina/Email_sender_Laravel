@@ -6,7 +6,7 @@
 <body>
     <h1>Registration Confirmation</h1>
 
-    <p>Kedves {{ $user->name }},</p>
+    <p>Kedves {{ $admin->name }},</p>
 
     <p>Köszönjük, hogy regisztráltál az oldalunkon!</p>
 

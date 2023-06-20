@@ -32,7 +32,7 @@ class ContactMessage extends Mailable
     public function build()
     {
         return $this->markdown('emails.contact.message')
-            ->subject('New Contact Message')
+            ->subject('Foglalás visszaigazolása')
             ->with([
                 'name' => $this->reservation->name,
                 'email' => $this->reservation->email,
