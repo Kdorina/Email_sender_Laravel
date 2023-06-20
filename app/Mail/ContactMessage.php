@@ -1,66 +1,44 @@
 <?php
-
 namespace App\Mail;
-use App\Mail\ContactMessage;
-use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Reservation;
 
 class ContactMessage extends Mailable
 {
     use Queueable, SerializesModels;
-    public $contactData;
+
+    public $reservation;
+
     /**
      * Create a new message instance.
-     */
-    public function __construct( $contactData )
-    {
-        $this->contactData = $contactData;
-    }
-
-    public function build(){
-         return $this->markdown('emails.contact.message')
-        ->with([
-            'name' => $this->contactData['name'],
-            'email' => $this->contactData['email'],
-            'phone_number' => $this->contactData['phone_number'],
-            'res_date' => $this->contactData['res_date'],
-            'messages' => $this->contactData['messages'],
-        ])
-        ->subject('New Contact Message');
-    }
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Köszönöm a megkeresésed! ',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            markdown: 'emails.contact.message',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @param  Reservation  $reservation
+     * @return void
      */
-    public function attachments(): array
+    public function __construct(Reservation $reservation)
     {
-        return [];
+        $this->reservation = $reservation;
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->markdown('emails.contact.message')
+            ->subject('New Contact Message')
+            ->with([
+                'name' => $this->reservation->name,
+                'email' => $this->reservation->email,
+                'phone_number' => $this->reservation->phone_number,
+                'res_date' => $this->reservation->res_date,
+                'messages' => $this->reservation->messages,
+            ]);
     }
 }

@@ -27,3 +27,4 @@ Route::post("/login", [AdminController::class,"login"]);
 
 
 Route::post('/sendmail', [ContactController::class, 'send']);
+Route::post('/res', [ContactController::class, 'create']);

@@ -1,8 +1,28 @@
-<h1>Automatizált üzenet, kérlek erre ne válaszolj</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Foglalás visszaigazolás</title>
+</head>
+<body>
+    <h1>Foglalás visszaigazolása</h1>
+    <p>Kedves {{ $reservation->name }},</p>
 
-<p><strong>Name:</strong> {{ $name }}</p>
-<p><strong>Email:</strong> {{ $email }}</p>
-<p><strong>Telefonszám:</strong> {{ $phone_number }}</p>
-<p><strong>Dátum:</strong> {{ $res_date }}</p>
-<p><strong>Üzenet:</strong></p>
-<p>{{ $messages }}</p>
+    <p>Köszönjük a foglalását. Az alábbi részletekkel rögzítettük a foglalását:</p>
+
+    <ul>
+        <li>Név: {{ $reservation->name }}</li>
+        <li>E-mail: {{ $reservation->email }}</li>
+        <li>Telefonszám: {{ $reservation->phone_number }}</li>
+        <li>Foglalás dátuma: {{ $reservation->res_date }}</li>
+        <li>Üzenet: {{ $reservation->messages }}</li>
+    </ul>
+
+    <p>További kérdéseivel vagy módosítási igényeivel kapcsolatban kérjük, lépjen velünk kapcsolatba.</p>
+
+    <p>Köszönjük, hogy minket választott!</p>
+
+    <p>Üdvözlettel,<br>
+    Saját Rendszer</p>
+</body>
+</html>
