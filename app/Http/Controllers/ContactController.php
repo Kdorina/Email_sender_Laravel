@@ -24,7 +24,7 @@ class ContactController extends BaseController
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            "name" => "required",
+            "first_name" => "required",
             "email" => "required",
             "phone_number" => "required",
             "res_date" => "required",
@@ -48,7 +48,7 @@ class ContactController extends BaseController
     {
         $input = $request->all();
         $validator = Validator::make( $input , [
-            "name" => "required",
+            "first_name" => "required",
             "email" => "required",
             "phone_number" =>"required",
             "res_date" => "required",

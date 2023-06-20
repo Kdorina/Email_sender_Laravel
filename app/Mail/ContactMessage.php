@@ -34,7 +34,7 @@ class ContactMessage extends Mailable
         return $this->markdown('emails.contact.message')
             ->subject('Foglalás visszaigazolása')
             ->with([
-                'name' => $this->reservation->name,
+                'first_name' => $this->reservation->first_name,
                 'email' => $this->reservation->email,
                 'phone_number' => $this->reservation->phone_number,
                 'res_date' => $this->reservation->res_date,

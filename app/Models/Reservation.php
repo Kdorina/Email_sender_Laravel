@@ -9,14 +9,11 @@ class Reservation extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "name",
+        "first_name",
         "email",
         "phone_number",
         "messages",
         "res_date"
     ];
-    protected $dates = [
-        "res_date"
 
-    ];
 }
