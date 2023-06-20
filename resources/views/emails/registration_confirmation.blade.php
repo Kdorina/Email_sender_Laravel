@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registration Confirmation</title>
+    <title>Regisztráció megerősítése</title>
 </head>
 <body>
-    <h1>Registration Confirmation</h1>
+    <h1>Regisztráció megerősítése</h1>
 
     <p>Kedves {{ $admin->name }},</p>
 
@@ -13,6 +13,6 @@
     <p>A regisztrációd sikeresen megtörtént.</p>
 
     <p>Üdvözlettel,</p>
-    <p>Weboldal csapata</p>
+    <p>Apád</p>
 </body>
 </html>

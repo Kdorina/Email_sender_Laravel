@@ -33,6 +33,6 @@ class RegistrationConfirmation extends Mailable
     public function build()
     {
         return $this->view('emails.registration_confirmation')
-                    ->subject('Registration Confirmation');
+                    ->subject('Regisztráció megerősítése');
     }
 }
