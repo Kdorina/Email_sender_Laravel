@@ -16,6 +16,8 @@ Route::group(['middleware'=>["auth:sanctum"]],function(){
     Route::put("/foglalas_frissites/{id}",[ContactController::class ,"update"]);
     Route::delete("/foglalas_torlese/{id}",[ContactController::class ,"destroy"]);
 
+    Route::post("/logout", [AdminController::class,"logout"]);
+
 });
 
 
