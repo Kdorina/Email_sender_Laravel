@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime("res_date");
             // $table->string("options");
             $table->string("messages");
+            $table->foreignId('admin_id');
             $table->timestamps();
         });
     }

@@ -11,12 +11,24 @@ use Validator;
 use App\Models\Contact;
 use App\Http\Resources\ReservationResource;
 use App\Models\Reservation;
+use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 class ContactController extends BaseController
 {
     public function index()
     {
-        $reservations = Reservation::all();
-        return $reservations;
+       /*  $reservations = Reservation::all(); */
+       $patients = Reservation::all();
+       if(Auth::check()){
+        $admin_id = Auth::user()->id;
+        $patients = DB::table('reservations')->where(['admin_id'=> $admin_id])->exists();
+        if(!$patients) {
+            $patients = Reservation::all();
+        }
+       }
+        return $patients;
+      /*   return $this->sendResponse(new ReservationResource($patients), "Sikeres feldolgozás"); */
     }
 
     public function create(Request $request)
